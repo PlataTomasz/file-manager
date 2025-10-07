@@ -13,7 +13,7 @@ public:
     explicit DirectoryPathInput(QWidget *parent = nullptr);
 
     QString getCurrentDirectoryPath();
-public slots:
+signals:
     // User prompted a valid directory path
     void validDirectoryPathPrompted(QString path);
     // User prompted an invalid directory path - i.e. non-existant one
@@ -22,8 +22,6 @@ protected:
     
 private:
     QString currentDirectoryPath;
-
-    void onTextEdited(QString path);
     void onSubmit();
 };
 

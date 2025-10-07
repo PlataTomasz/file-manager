@@ -23,7 +23,26 @@
          <widget class="QWidget" name="sidebar" native="true"/>
         </item>
         <item>
-         <widget class="QWidget" name="directoryView" native="true"/>
+         <widget class="QScrollArea" name="scrollArea">
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>644</width>
+             <height>525</height>
+            </rect>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_2">
+            <item row="0" column="0">
+             <widget class="DirectoryViewWidget" name="directoryView" native="true"/>
+            </item>
+           </layout>
+          </widget>
+         </widget>
         </item>
        </layout>
       </item>
@@ -51,6 +70,12 @@
    <class>DirectoryPathWidget</class>
    <extends>QWidget</extends>
    <header>DirectoryPathWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>DirectoryViewWidget</class>
+   <extends>QWidget</extends>
+   <header>DirectoryViewWidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

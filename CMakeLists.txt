@@ -14,6 +14,10 @@ set(SOURCES
     src/components/DirectoryViewWidget.cpp
     src/components/DirectoryPathWidget.cpp
     src/components/DirectoryPathInput.cpp
+    src/components/FileSystemItemWidget.cpp
+    src/components/DirectoryItemWidget.cpp
+    src/components/FileItemWidget.cpp
+    src/layouts/FlowLayout.cpp
     src/data_structures/DirectoryItem.cpp
 
 )
@@ -23,11 +27,15 @@ set(HEADERS
     src/components/DirectoryViewWidget.h
     src/components/DirectoryPathWidget.h
     src/components/DirectoryPathInput.h
+    src/components/FileSystemItemWidget.h
+    src/components/DirectoryItemWidget.h
+    src/components/FileItemWidget.h
+    src/layouts/FlowLayout.h
     src/data_structures/DirectoryItem.h
 )
 
 set(UI
-
+    
 )
 
 set(ICONS

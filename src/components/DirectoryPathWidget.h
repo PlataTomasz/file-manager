@@ -14,8 +14,9 @@ class DirectoryPathWidget : public QWidget
 
 public:
     explicit DirectoryPathWidget(QWidget *parent = nullptr);
-public slots:
     void onValidPathPrompt(QString path);
+signals:
+    void validPathPrompt(QString path);
 private:
     Ui::DirectoryPathWidget ui;
 };

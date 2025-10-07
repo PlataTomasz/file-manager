@@ -6,11 +6,12 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui.setupUi(this);
 
-    //connect(ui.directoryPathWidget, &DirectoryPathWidget::onPathPrompt, this, &MainWindow::handleCurrentPathChange);
+    connect(ui.directoryPathWidget, &DirectoryPathWidget::validPathPrompt, this, &MainWindow::onDirectoryWidgetPathChange);
 }
 
 
-void MainWindow::handleCurrentPathChange(std::string newPath)
+void MainWindow::onDirectoryWidgetPathChange(QString path)
 {
-    std::cout<<"Path changed! New path is: "<<newPath<<std::endl;
+    std::cout<<"Path changed via child widget! New path is: "<<path.toStdString()<<std::endl;
+    ui.directoryView->displayDirectory(path);
 }

@@ -1,30 +1,71 @@
 #include "DirectoryViewWidget.h"
+#include "DirectoryItemWidget.h"
+#include "FileItemWidget.h"
+#include "FileSystemItemWidget.h"
+#include "layouts/FlowLayout.h"
+#include <QFileInfo>
+#include <qgridlayout.h>
+#include <qicon.h>
+#include <QObject>
+#include <QDir>
+#include <QFileIconProvider>
+#include <iostream>
+#include <QWidget>
+#include <qwidget.h>
 
 DirectoryViewWidget::DirectoryViewWidget(QWidget *parent)
 {
     ui.setupUi(this);
+    FlowLayout *directoryViewLayout = new FlowLayout;
+    setLayout(directoryViewLayout);
 }
 
-void DirectoryViewWidget::populateContent()
+void DirectoryViewWidget::displayDirectory(QString path)
 {
+    QDir currentDirectory = QDir(path);
+    if(!currentDirectory.exists())
+    {
+        std::cerr<<"Failed to open directory! Path:"<<path.toStdString()<<std::endl;
+        return;
+    }
+
+    // Clear previous elements
+    QLayoutItem* item;
+    while ((item = layout()->takeAt(0)) != nullptr) {
+        if(QWidget *widget = item->widget()) {
+            widget->setParent(nullptr);
+            delete widget;
+        }
+        delete item;
+    }
+
     // TODO: Make width be proportional to window size
     int colIndex = 0;
     int rowIndex = 0;
 
     const int maxColumns = 3;
-    /*
-    for(ImageItem imageItem : imageItems)
+    
+    for(QFileInfo entry : currentDirectory.entryInfoList())
     {
-        auto imageItemWidget = new ImageItemWidget();
-        QPixmap pixmap;
-        bool isImageDataOk = pixmap.loadFromData(imageItem.data.data(), imageItem.data.size());
-        if(isImageDataOk)
+        FileSystemItemWidget *itemWidget = nullptr;
+
+        if(entry.isFile())
         {
-            imageItemWidget->setImage(pixmap);
+            itemWidget = new FileItemWidget();
         }
-        
-        imageItemWidget->setLabel(imageItem.name.c_str());
-        ui.imageArea->addWidget(imageItemWidget, rowIndex, colIndex);
+        else if(entry.isDir())
+        {
+            itemWidget = new DirectoryItemWidget();
+        }
+
+        if(itemWidget == nullptr)
+        {
+            std::cerr<<"Failed to create widget for file named "<<entry.fileName().toStdString()<<std::endl;
+            continue;
+        }
+
+        itemWidget->setFileInfo(entry);
+        layout()->addWidget(itemWidget);
 
         colIndex++;
         if(colIndex == maxColumns)
@@ -33,5 +74,4 @@ void DirectoryViewWidget::populateContent()
             rowIndex++;
         }
     }
-    */
 }

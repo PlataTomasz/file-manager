@@ -2,19 +2,17 @@
 #define __FILEITEMWIDGET_H__
 
 #include "FileItem.h"
+#include "FileSystemItemWidget.h"
 #include <qtmetamacros.h>
 #include <qwidget.h>
 
-class FileItemWidget : public QWidget
+class FileItemWidget : public FileSystemItemWidget
 {
     Q_OBJECT
-private:
-    FileItem item;
-private slots:
-    void onLeftClick();
-    void onRightClick();
+protected:
+    virtual void onRightClick() override;
 public:
-    FileItemWidget(QWidget *parent = nullptr);
+    explicit FileItemWidget(QWidget *parent = nullptr);
 };
 
 #endif // __FILEITEMWIDGET_H__

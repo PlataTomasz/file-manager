@@ -2,6 +2,7 @@
 #define __MAINWINDOW_H__
 
 #include <qmainwindow.h>
+#include <qobject.h>
 #include <qtmetamacros.h>
 #include <qwidget.h>
 
@@ -13,7 +14,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 public:
     explicit MainWindow(QWidget *parent = nullptr);
-    void handleCurrentPathChange(std::string newPath);
+    void onDirectoryWidgetPathChange(QString path);
 private:
     Ui::MainWindow ui;
 };
