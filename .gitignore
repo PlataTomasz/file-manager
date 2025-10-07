@@ -1,0 +1,108 @@
+# ----------------------
+# Generic
+# ----------------------
+.cache
+# ----------------------
+# Project specific
+# ----------------------
+resources/images
+# ----------------------
+# CMake
+# ----------------------
+CMakeFiles/
+CMakeCache.txt
+cmake-build-*/
+CMakeScripts/
+CMakeLists.txt.user
+CMakeInstall.cmake
+Makefile
+*.cmake
+CTestTestfile.cmake
+
+# ----------------------
+# Build directories
+# ----------------------
+build/
+bin/
+lib/
+*.o
+*.obj
+*.so
+*.a
+*.dll
+*.dylib
+*.exe
+
+# ----------------------
+# Qt / Qt Creator
+# ----------------------
+*.moc
+*.moc.cpp
+*.moc.h
+*.ui.h
+*.qrc.cpp
+*.user
+*.pro.user
+*.pro.user.*.bak
+*.qbs.user
+*.autosave
+*.qmake.stash
+*.qmlc
+*.qmltypes
+*.jsc
+*.qrc
+*.rcc
+*.qmlproject.user
+
+# ----------------------
+# VSCode
+# ----------------------
+.vscode/
+*.code-workspace
+
+# ----------------------
+# CLion
+# ----------------------
+cmake-build-*/
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# ----------------------
+# Visual Studio
+# ----------------------
+*.VC.db
+*.VC.VC.opendb
+*.sdf
+*.opensdf
+*.user
+*.ncb
+*.suo
+*.ipch
+*.pch
+*.ilk
+*.pdb
+*.obj
+*.idb
+*.iobj
+*.log
+*.tlog
+*.lastbuildstate
+*.ipch/
+x64/
+Debug/
+Release/
+*.filters
+*.vcxproj.user
+*.sln.docstates
+
+# ----------------------
+# Misc / OS
+# ----------------------
+*.DS_Store
+*.swp
+*.bak
+*.tmp
+*.orig
+*.rej
