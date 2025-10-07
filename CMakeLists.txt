@@ -11,10 +11,19 @@ find_package(Qt6 REQUIRED COMPONENTS Widgets Core Gui UiTools)
 set(SOURCES
     src/main.cpp
     src/components/MainWindow.cpp
+    src/components/DirectoryViewWidget.cpp
+    src/components/DirectoryPathWidget.cpp
+    src/components/DirectoryPathInput.cpp
+    src/data_structures/DirectoryItem.cpp
+
 )
 
 set(HEADERS
     src/components/MainWindow.h
+    src/components/DirectoryViewWidget.h
+    src/components/DirectoryPathWidget.h
+    src/components/DirectoryPathInput.h
+    src/data_structures/DirectoryItem.h
 )
 
 set(UI
@@ -41,7 +50,9 @@ set(CMAKE_AUTORCC ON)
 include_directories(
     src
     src/components
-    src/data_containers
+    src/data_structures
+    src/os
+    src/services
 )
 
 # Create the executable

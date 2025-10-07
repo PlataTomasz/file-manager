@@ -13,7 +13,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 public:
     explicit MainWindow(QWidget *parent = nullptr);
-
+    void handleCurrentPathChange(std::string newPath);
 private:
     Ui::MainWindow ui;
 };

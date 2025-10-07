@@ -7,13 +7,33 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>614</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Simple file manager</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,5">
+        <item>
+         <widget class="QWidget" name="sidebar" native="true"/>
+        </item>
+        <item>
+         <widget class="QWidget" name="directoryView" native="true"/>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="0">
+     <widget class="DirectoryPathWidget" name="directoryPathWidget" native="true"/>
+    </item>
+   </layout>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -26,6 +46,14 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>DirectoryPathWidget</class>
+   <extends>QWidget</extends>
+   <header>DirectoryPathWidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
