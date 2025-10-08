@@ -74,7 +74,7 @@ void DirectoryViewWidget::displayDirectory(QString path)
         if(entry.isDir())
         {
             connect(itemWidget, &FileSystemItemWidget::primaryInteraction, this, [this](QFileInfo info) {
-                emit currentDirectoryChangeRequest(info.filePath());
+                emit directoryOpened(info.filePath());
             });
         }
         else if(entry.isFile())
@@ -97,9 +97,4 @@ void DirectoryViewWidget::displayDirectory(QString path)
             rowIndex++;
         }
     }
-}
-
-void DirectoryViewWidget::setCurrentDirectoryPath(QString currentDirPath)
-{
-    displayDirectory(currentDirPath);
 }

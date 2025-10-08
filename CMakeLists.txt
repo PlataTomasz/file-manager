@@ -19,6 +19,7 @@ set(SOURCES
     src/components/FileItemWidget.cpp
     src/layouts/FlowLayout.cpp
     src/data_structures/DirectoryItem.cpp
+    src/services/DirectoryNavigationService.cpp
 
 )
 
@@ -32,6 +33,7 @@ set(HEADERS
     src/components/FileItemWidget.h
     src/layouts/FlowLayout.h
     src/data_structures/DirectoryItem.h
+    src/services/DirectoryNavigationService.h
 )
 
 set(UI

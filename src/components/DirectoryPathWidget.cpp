@@ -1,6 +1,7 @@
 #include "DirectoryPathWidget.h"
 #include "DirectoryPathInput.h"
 #include <qassert.h>
+#include <qobject.h>
 
 DirectoryPathWidget::DirectoryPathWidget(QWidget *parent)
 {
@@ -11,23 +12,15 @@ DirectoryPathWidget::DirectoryPathWidget(QWidget *parent)
 
 void DirectoryPathWidget::onValidPathPrompt(QString path)
 {
-    emit validPathPrompt(path);
-}
-
-void DirectoryPathWidget::setCurrentDirectoryPath(QString currentDirPath)
-{
-    previousDirectories.push(ui.directoryPathInput->getCurrentDirectoryPath());
-    ui.directoryPathInput->setCurrentDirectoryPath(currentDirPath);
+    emit pathEdited(path);
 }
 
 void DirectoryPathWidget::onBackButtonPressed()
 {
-    if(!previousDirectories.empty())
-    {
-        auto lastPath = previousDirectories.top();
-        previousDirectories.pop();
+    emit backButtonPressed();
+}
 
-        ui.directoryPathInput->setCurrentDirectoryPath(lastPath);
-        emit validPathPrompt(lastPath);
-    }
+void DirectoryPathWidget::changeDisplayedPath(QString path)
+{
+    ui.directoryPathInput->setText(path);
 }

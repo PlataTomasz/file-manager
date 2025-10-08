@@ -2,6 +2,7 @@
 #define __DIRECTORYPATHWIDGET_H__
 
 
+#include <qcontainerfwd.h>
 #include <qobject.h>
 #include <qtmetamacros.h>
 #include <qwidget.h>
@@ -16,10 +17,10 @@ class DirectoryPathWidget : public QWidget
 public:
     explicit DirectoryPathWidget(QWidget *parent = nullptr);
     void onValidPathPrompt(QString path);
-
-    void setCurrentDirectoryPath(QString currentDirPath);
+    void changeDisplayedPath(QString path);
 signals:
-    void validPathPrompt(QString path);
+    void pathEdited(QString path);
+    void backButtonPressed();
 private:
     void onBackButtonPressed();
 

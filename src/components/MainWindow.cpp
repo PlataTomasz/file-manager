@@ -1,4 +1,5 @@
 #include "MainWindow.h"
+#include "DirectoryNavigationService.h"
 #include "DirectoryPathWidget.h"
 #include "DirectoryViewWidget.h"
 #include <iostream>
@@ -8,26 +9,28 @@ MainWindow::MainWindow(QWidget *parent)
     ui.setupUi(this);
 
     // TODO: Should be a dependency, not hardcoded!
-    setCurrentDirectoryPath("/");
+    directoryNavigationService = new DirectoryNavigationService();
 
-    connect(ui.directoryPathWidget, &DirectoryPathWidget::validPathPrompt, this, &MainWindow::onDirectoryWidgetPathChange);
-    connect(ui.directoryView, &DirectoryViewWidget::currentDirectoryChangeRequest, this, &MainWindow::currentDirectoryChangeRequested);
-}
+    connect(
+        ui.directoryPathWidget, &DirectoryPathWidget::pathEdited, 
+        directoryNavigationService, &DirectoryNavigationService::changeCurrentDirectory
+    );
+    connect(
+        directoryNavigationService, &DirectoryNavigationService::currentDirectoryChanged,
+        ui.directoryPathWidget, &DirectoryPathWidget::changeDisplayedPath
+    );
+    connect(
+        ui.directoryView, &DirectoryViewWidget::directoryOpened,
+        directoryNavigationService, &DirectoryNavigationService::changeCurrentDirectory
+    );
+    connect(
+        directoryNavigationService, &DirectoryNavigationService::currentDirectoryChanged,
+        ui.directoryView, &DirectoryViewWidget::displayDirectory
+    );
+    connect(
+        ui.directoryPathWidget, &DirectoryPathWidget::backButtonPressed,
+        directoryNavigationService, &DirectoryNavigationService::returnToPreviousDirectory
+    );
 
-void MainWindow::setCurrentDirectoryPath(QString currentDirPath)
-{
-    // Tell children that they should change their state to reflect this
-    ui.directoryPathWidget->setCurrentDirectoryPath(currentDirPath);
-    ui.directoryView->setCurrentDirectoryPath(currentDirPath);
-}
-
-void MainWindow::onDirectoryWidgetPathChange(QString path)
-{
-    std::cout<<"Path changed via child widget! New path is: "<<path.toStdString()<<std::endl;
-    ui.directoryView->displayDirectory(path);
-}
-
-void MainWindow::currentDirectoryChangeRequested(QString newCurrentDirPath)
-{
-    setCurrentDirectoryPath(newCurrentDirPath);
+    directoryNavigationService->setInitialPath("/home");
 }

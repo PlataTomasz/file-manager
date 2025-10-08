@@ -6,6 +6,7 @@
 #include <qtmetamacros.h>
 #include <qwidget.h>
 
+#include "DirectoryNavigationService.h"
 #include "ui_MainWindow.h"
 
 
@@ -14,12 +15,8 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 public:
     explicit MainWindow(QWidget *parent = nullptr);
-    void onDirectoryWidgetPathChange(QString path);
-
-    void setCurrentDirectoryPath(QString currentDirPath);
-private slots:
-    void currentDirectoryChangeRequested(QString newCurrentDirPath);
 private:
+    DirectoryNavigationService *directoryNavigationService;
     Ui::MainWindow ui;
 };
 

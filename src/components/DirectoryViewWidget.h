@@ -13,10 +13,8 @@ public:
     explicit DirectoryViewWidget(QWidget *parent = nullptr);
     // Populates content based on currently browsed directory
     void displayDirectory(QString path);
-    void setCurrentDirectoryPath(QString currentDirPath);
 signals:
-    void currentDirectoryChangeRequest(QString newCurrentDirectory);
-
+    void directoryOpened(QString path);
 private:
     Ui::DirectoryView ui;
 };
