@@ -82,3 +82,8 @@ void DirectoryViewWidget::displayDirectory(QString path)
         }
     }
 }
+
+void DirectoryViewWidget::setCurrentDirectoryPath(QString currentDirPath)
+{
+    displayDirectory(currentDirPath);
+}

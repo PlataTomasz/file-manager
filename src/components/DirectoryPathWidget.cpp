@@ -12,3 +12,8 @@ void DirectoryPathWidget::onValidPathPrompt(QString path)
 {
     emit validPathPrompt(path);
 }
+
+void DirectoryPathWidget::setCurrentDirectoryPath(QString currentDirPath)
+{
+    ui.directoryPathInput->setCurrentDirectoryPath(currentDirPath);
+}

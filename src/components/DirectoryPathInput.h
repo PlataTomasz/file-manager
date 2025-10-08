@@ -13,6 +13,7 @@ public:
     explicit DirectoryPathInput(QWidget *parent = nullptr);
 
     QString getCurrentDirectoryPath();
+    void setCurrentDirectoryPath(QString currentDirPath);
 signals:
     // User prompted a valid directory path
     void validDirectoryPathPrompted(QString path);

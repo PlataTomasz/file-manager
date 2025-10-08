@@ -15,6 +15,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     void onDirectoryWidgetPathChange(QString path);
+
+    void setCurrentDirectoryPath(QString currentDirPath);
 private:
     Ui::MainWindow ui;
 };

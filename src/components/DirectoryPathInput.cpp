@@ -27,3 +27,9 @@ void DirectoryPathInput::onSubmit()
         emit invalidDirectoryPathPrompted(text());
     }
 }
+
+void DirectoryPathInput::setCurrentDirectoryPath(QString currentDirPath)
+{
+    setText(currentDirPath);
+    currentDirectoryPath = currentDirPath;
+}
