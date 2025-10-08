@@ -1,4 +1,5 @@
 #include "FileSystemItemWidget.h"
+#include <qfileiconprovider.h>
 
 FileSystemItemWidget::FileSystemItemWidget(QWidget *parent)
 {
@@ -17,7 +18,9 @@ void FileSystemItemWidget::onRightClick()
 
 void FileSystemItemWidget::setFileInfo(QFileInfo fileInfo)
 {
+    QFileIconProvider iconProvider;
+
     this->fileInfo = fileInfo;
-    //ui.iconLabel->pixmap(fileInfo);
+    ui.iconLabel->setPixmap(iconProvider.icon(fileInfo).pixmap(64, 64));
     ui.filenameLabel->setText(fileInfo.fileName());
 }

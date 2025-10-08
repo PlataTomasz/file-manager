@@ -16,6 +16,9 @@
 DirectoryViewWidget::DirectoryViewWidget(QWidget *parent)
 {
     ui.setupUi(this);
+
+    // Replace layout
+    delete layout();
     FlowLayout *directoryViewLayout = new FlowLayout;
     setLayout(directoryViewLayout);
 }
@@ -28,6 +31,7 @@ void DirectoryViewWidget::displayDirectory(QString path)
         std::cerr<<"Failed to open directory! Path:"<<path.toStdString()<<std::endl;
         return;
     }
+    currentDirectory.setFilter(QDir::AllEntries | QDir::NoDotAndDotDot);
 
     // Clear previous elements
     QLayoutItem* item;
@@ -65,6 +69,9 @@ void DirectoryViewWidget::displayDirectory(QString path)
         }
 
         itemWidget->setFileInfo(entry);
+        // Reasonable size, so thumbnails are visible
+        itemWidget->setFixedWidth(256);
+        itemWidget->setFixedHeight(256);
         layout()->addWidget(itemWidget);
 
         colIndex++;
