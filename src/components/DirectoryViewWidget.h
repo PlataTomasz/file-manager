@@ -14,6 +14,9 @@ public:
     // Populates content based on currently browsed directory
     void displayDirectory(QString path);
     void setCurrentDirectoryPath(QString currentDirPath);
+signals:
+    void currentDirectoryChangeRequest(QString newCurrentDirectory);
+
 private:
     Ui::DirectoryView ui;
 };

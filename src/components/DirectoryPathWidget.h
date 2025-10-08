@@ -5,6 +5,7 @@
 #include <qobject.h>
 #include <qtmetamacros.h>
 #include <qwidget.h>
+#include <stack>
 #include "ui_DirectoryPathWidget.h"
 
 // Widget representing path string in file manager along It's controls
@@ -20,6 +21,9 @@ public:
 signals:
     void validPathPrompt(QString path);
 private:
+    void onBackButtonPressed();
+
+    std::stack<QString> previousDirectories;
     Ui::DirectoryPathWidget ui;
 };
 

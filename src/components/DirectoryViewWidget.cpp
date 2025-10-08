@@ -4,6 +4,7 @@
 #include "FileSystemItemWidget.h"
 #include "layouts/FlowLayout.h"
 #include <QFileInfo>
+#include <qfileinfo.h>
 #include <qgridlayout.h>
 #include <qicon.h>
 #include <QObject>
@@ -11,7 +12,9 @@
 #include <QFileIconProvider>
 #include <iostream>
 #include <QWidget>
+#include <qurl.h>
 #include <qwidget.h>
+#include <QDesktopServices>
 
 DirectoryViewWidget::DirectoryViewWidget(QWidget *parent)
 {
@@ -66,6 +69,19 @@ void DirectoryViewWidget::displayDirectory(QString path)
         {
             std::cerr<<"Failed to create widget for file named "<<entry.fileName().toStdString()<<std::endl;
             continue;
+        }
+
+        if(entry.isDir())
+        {
+            connect(itemWidget, &FileSystemItemWidget::primaryInteraction, this, [this](QFileInfo info) {
+                emit currentDirectoryChangeRequest(info.filePath());
+            });
+        }
+        else if(entry.isFile())
+        {
+            connect(itemWidget, &FileSystemItemWidget::primaryInteraction, this, [this](QFileInfo info) {
+                QDesktopServices::openUrl(QUrl::fromLocalFile(info.absoluteFilePath()));
+            });
         }
 
         itemWidget->setFileInfo(entry);

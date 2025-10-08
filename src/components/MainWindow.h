@@ -17,6 +17,8 @@ public:
     void onDirectoryWidgetPathChange(QString path);
 
     void setCurrentDirectoryPath(QString currentDirPath);
+private slots:
+    void currentDirectoryChangeRequested(QString newCurrentDirPath);
 private:
     Ui::MainWindow ui;
 };

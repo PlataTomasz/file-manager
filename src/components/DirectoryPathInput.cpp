@@ -2,6 +2,8 @@
 #include <cstdint>
 #include <iostream>
 #include <qassert.h>
+#include <qcontainerfwd.h>
+#include <qdir.h>
 #include <qline.h>
 #include <qlineedit.h>
 #include <qtmetamacros.h>
@@ -17,10 +19,12 @@ void DirectoryPathInput::onSubmit()
 {
     // Check if path exists
     QDir directory = QDir(text());
+    QString absoluteDirectoryPath = directory.absolutePath();
 
     if(directory.exists())
     {
-        emit validDirectoryPathPrompted(text());
+        setText(absoluteDirectoryPath);
+        emit validDirectoryPathPrompted(absoluteDirectoryPath);
     }
     else
     {
@@ -30,6 +34,13 @@ void DirectoryPathInput::onSubmit()
 
 void DirectoryPathInput::setCurrentDirectoryPath(QString currentDirPath)
 {
-    setText(currentDirPath);
-    currentDirectoryPath = currentDirPath;
+    QDir directory = QDir(currentDirPath);
+    auto absoluteDirPath = directory.absolutePath();
+    setText(absoluteDirPath);
+    currentDirectoryPath = absoluteDirPath;
+}
+
+QString DirectoryPathInput::getCurrentDirectoryPath()
+{
+    return currentDirectoryPath;
 }
