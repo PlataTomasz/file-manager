@@ -4,6 +4,7 @@
 #include <qcontainerfwd.h>
 #include <qtmetamacros.h>
 #include <qwidget.h>
+#include "ThumbnailProviderService.h"
 #include "ui_DirectoryView.h"
 
 class DirectoryViewWidget : public QWidget
@@ -16,6 +17,7 @@ public:
 signals:
     void directoryOpened(QString path);
 private:
+    ThumbnailProviderService *thumbnailProviderService = nullptr;
     Ui::DirectoryView ui;
 };
 

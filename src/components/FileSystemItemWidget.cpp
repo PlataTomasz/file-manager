@@ -26,9 +26,11 @@ void FileSystemItemWidget::onRightClick()
 
 void FileSystemItemWidget::setFileInfo(QFileInfo fileInfo)
 {
-    QFileIconProvider iconProvider;
-
     this->fileInfo = fileInfo;
-    ui.iconLabel->setPixmap(iconProvider.icon(fileInfo).pixmap(64, 64));
     ui.filenameLabel->setText(fileInfo.fileName());
+}
+
+void FileSystemItemWidget::setThumbnail(QPixmap thumnailImage)
+{
+    ui.iconLabel->setPixmap(thumnailImage);
 }

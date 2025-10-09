@@ -20,7 +20,6 @@ set(SOURCES
     src/layouts/FlowLayout.cpp
     src/data_structures/DirectoryItem.cpp
     src/services/DirectoryNavigationService.cpp
-
 )
 
 set(HEADERS
@@ -34,6 +33,8 @@ set(HEADERS
     src/layouts/FlowLayout.h
     src/data_structures/DirectoryItem.h
     src/services/DirectoryNavigationService.h
+    src/services/ThumbnailProviderService.h
+    src/services/LinuxThumbnailProviderService.h
 )
 
 set(UI

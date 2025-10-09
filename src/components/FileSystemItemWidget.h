@@ -5,6 +5,7 @@
 #include <deque>
 #include <qfileinfo.h>
 #include <qobject.h>
+#include <qpixmap.h>
 #include <qtmetamacros.h>
 #include <queue>
 #include <qwidget.h>
@@ -26,6 +27,7 @@ public:
     explicit FileSystemItemWidget(QWidget *parent = nullptr);
 
     void setFileInfo(QFileInfo fileInfo);
+    void setThumbnail(QPixmap thumnailImage);
 };
 
 #endif // __FILESYSTEMITEMWIDGET_H__

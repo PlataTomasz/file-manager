@@ -15,6 +15,8 @@
 #include <qurl.h>
 #include <qwidget.h>
 #include <QDesktopServices>
+#include <QFileIconProvider>
+#include "LinuxThumbnailProviderService.h"
 
 DirectoryViewWidget::DirectoryViewWidget(QWidget *parent)
 {
@@ -24,6 +26,9 @@ DirectoryViewWidget::DirectoryViewWidget(QWidget *parent)
     delete layout();
     FlowLayout *directoryViewLayout = new FlowLayout;
     setLayout(directoryViewLayout);
+
+    // TODO: Remove - Temporary implementation testing
+    thumbnailProviderService = new LinuxThumbnailProviderService();
 }
 
 void DirectoryViewWidget::displayDirectory(QString path)
@@ -85,6 +90,18 @@ void DirectoryViewWidget::displayDirectory(QString path)
         }
 
         itemWidget->setFileInfo(entry);
+        QPixmap thumbnailImage = thumbnailProviderService->getThumbnailForFile(entry.absoluteFilePath());
+
+        if(!thumbnailImage.isNull())
+        {
+            itemWidget->setThumbnail(thumbnailImage);
+        }
+        else
+        {
+            // Thumbnail image retrieval failed, resort to system default
+            QFileIconProvider iconProvider;
+            itemWidget->setThumbnail(iconProvider.icon(entry).pixmap(128, 128));
+        }
         // Reasonable size, so thumbnails are visible
         itemWidget->setFixedWidth(256);
         itemWidget->setFixedHeight(256);
