@@ -4,6 +4,7 @@
 #include "FileSystemItemWidget.h"
 #include "layouts/FlowLayout.h"
 #include <QFileInfo>
+#include <qdir.h>
 #include <qfileinfo.h>
 #include <qgridlayout.h>
 #include <qicon.h>
@@ -40,6 +41,7 @@ void DirectoryViewWidget::displayDirectory(QString path)
         return;
     }
     currentDirectory.setFilter(QDir::AllEntries | QDir::NoDotAndDotDot);
+    currentDirectory.setSorting(QDir::Type | QDir::Name);
 
     // Clear previous elements
     QLayoutItem* item;
