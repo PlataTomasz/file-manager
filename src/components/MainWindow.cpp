@@ -5,12 +5,12 @@
 #include "QuickDirectoryAccessWidget.h"
 #include <iostream>
 
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(DirectoryNavigationService *directoryNavigationService, QWidget *parent)
 {
     ui.setupUi(this);
 
-    // TODO: Should be a dependency, not hardcoded!
-    directoryNavigationService = new DirectoryNavigationService();
+    this->directoryNavigationService = directoryNavigationService;
+    directoryNavigationService->setParent(this);
 
     connect(
         ui.directoryPathWidget, &DirectoryPathWidget::pathEdited, 

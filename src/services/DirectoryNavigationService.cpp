@@ -1,9 +1,12 @@
 #include "DirectoryNavigationService.h"
 #include <qobject.h>
+#include <QTimer>
 
-DirectoryNavigationService::DirectoryNavigationService(QObject *parent)
+DirectoryNavigationService::DirectoryNavigationService(QString startingPath, QObject *parent)
 {
-
+    QTimer::singleShot(0, [this, startingPath](){
+        setInitialPath(startingPath);
+    });
 }
 
 void DirectoryNavigationService::changeCurrentDirectory(QString path)

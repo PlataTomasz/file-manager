@@ -14,7 +14,10 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(
+        DirectoryNavigationService *directoryNavigationService,
+        QWidget *parent = nullptr
+    );
 private:
     DirectoryNavigationService *directoryNavigationService;
     Ui::MainWindow ui;

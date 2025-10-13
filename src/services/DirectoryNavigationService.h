@@ -15,7 +15,7 @@ private:
 signals:
     void currentDirectoryChanged(QString path);
 public:
-    explicit DirectoryNavigationService(QObject *parent = nullptr);
+    explicit DirectoryNavigationService(QString startingPath, QObject *parent = nullptr);
 
     void changeCurrentDirectory(QString path);
     void returnToPreviousDirectory();
