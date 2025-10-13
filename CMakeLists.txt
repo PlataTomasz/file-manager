@@ -17,6 +17,8 @@ set(SOURCES
     src/components/FileSystemItemWidget.cpp
     src/components/DirectoryItemWidget.cpp
     src/components/FileItemWidget.cpp
+    src/components/QuickDirectoryAccessWidget.cpp
+    src/components/QuickDirAccessEntryWidget.cpp
     src/layouts/FlowLayout.cpp
     src/data_structures/DirectoryItem.cpp
     src/services/DirectoryNavigationService.cpp
@@ -30,6 +32,8 @@ set(HEADERS
     src/components/FileSystemItemWidget.h
     src/components/DirectoryItemWidget.h
     src/components/FileItemWidget.h
+    src/components/QuickDirectoryAccessWidget.h
+    src/components/QuickDirAccessEntryWidget.h
     src/layouts/FlowLayout.h
     src/data_structures/DirectoryItem.h
     src/services/DirectoryNavigationService.h

@@ -32,5 +32,9 @@ MainWindow::MainWindow(QWidget *parent)
         directoryNavigationService, &DirectoryNavigationService::returnToPreviousDirectory
     );
 
+    ui.quickDirAccessWidget->addEntry("/home");
+    ui.quickDirAccessWidget->addEntry("/usr");
+    ui.quickDirAccessWidget->addEntry("/opt");
+
     directoryNavigationService->setInitialPath("/home");
 }

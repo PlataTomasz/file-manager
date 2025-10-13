@@ -18,9 +18,28 @@
     <item row="1" column="0">
      <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1">
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,5">
+       <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="2,5">
         <item>
-         <widget class="QWidget" name="sidebar" native="true"/>
+         <widget class="QScrollArea" name="sidebar">
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents_2">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>218</width>
+             <height>525</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout">
+            <item>
+             <widget class="QuickDirectoryAccessWidget" name="quickDirAccessWidget" native="true"/>
+            </item>
+           </layout>
+          </widget>
+         </widget>
         </item>
         <item>
          <widget class="QScrollArea" name="scrollArea">
@@ -32,7 +51,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>644</width>
+             <width>552</width>
              <height>525</height>
             </rect>
            </property>
@@ -76,6 +95,12 @@
    <class>DirectoryViewWidget</class>
    <extends>QWidget</extends>
    <header>DirectoryViewWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>QuickDirectoryAccessWidget</class>
+   <extends>QWidget</extends>
+   <header>QuickDirectoryAccessWidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
