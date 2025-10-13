@@ -5,6 +5,7 @@
 #include <QDir>
 #include <qgridlayout.h>
 #include <qlabel.h>
+#include <qnamespace.h>
 #include <qobject.h>
 #include <qwidget.h>
 #include <QLayout>
@@ -12,6 +13,8 @@
 QuickDirectoryAccessWidget::QuickDirectoryAccessWidget(QWidget *parent)
 {
     ui.setupUi(this);
+
+    ui.pathLayout->setAlignment(Qt::AlignTop);
 }
 
 void QuickDirectoryAccessWidget::addEntry(QString path)

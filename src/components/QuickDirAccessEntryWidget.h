@@ -1,6 +1,7 @@
 #ifndef __QUICKDIRACCESSENTRYWIDGET_H__
 #define __QUICKDIRACCESSENTRYWIDGET_H__
 
+#include <qboxlayout.h>
 #include <qgridlayout.h>
 #include <qobject.h>
 #include <qtmetamacros.h>

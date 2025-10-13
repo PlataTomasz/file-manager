@@ -3,17 +3,26 @@
 #include <QDir>
 #include <QGridLayout>
 #include <QLabel>   
+#include <qboxlayout.h>
+#include <qgridlayout.h>
+#include <qlabel.h>
 #include <qobject.h>
+
+#include <iostream>
+#include <qsizepolicy.h>
+
 QuickDirAccessEntryWidget::QuickDirAccessEntryWidget(QWidget *parent)
 {
-    widget = new QWidget;
     layout = new QGridLayout;
 
     label = new QLabel;
-    label->setText("");
+    label->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
+    label->setText("NULL");
     layout->addWidget(label);
 
-    widget->setLayout(layout);
+    setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
+
+    setLayout(layout);
 }
 
 QuickDirAccessEntryWidget::QuickDirAccessEntryWidget(QString path, QWidget *parent) 

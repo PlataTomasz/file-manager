@@ -17,12 +17,19 @@
    <item>
     <widget class="QLabel" name="titleLabel">
      <property name="text">
-      <string>Quick access</string>
+      <string>Quick access:</string>
      </property>
     </widget>
    </item>
    <item>
-    <layout class="QVBoxLayout" name="pathLayout"/>
+    <layout class="QVBoxLayout" name="pathLayout" stretch="">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="sizeConstraint">
+      <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+     </property>
+    </layout>
    </item>
   </layout>
  </widget>
