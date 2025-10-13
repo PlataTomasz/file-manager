@@ -15,6 +15,8 @@ class QuickDirectoryAccessWidget : public QWidget
 private:
     Ui::QuickDirectoryAccessWidget ui;
     std::list<QuickDirAccessEntryWidget *> entries;
+signals:
+    void directoryOpened(QString string);
 public:
     explicit QuickDirectoryAccessWidget(QWidget *parent = nullptr);
 

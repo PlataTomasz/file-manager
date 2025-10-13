@@ -23,6 +23,10 @@ void QuickDirectoryAccessWidget::addEntry(QString path)
 
     entries.push_back(widget);
     ui.pathLayout->addWidget(widget);
+
+    connect(widget, &QuickDirAccessEntryWidget::doubleClicked, this, [this, widget]() {
+        emit directoryOpened(widget->getPath());
+    } );
 }
 
 void QuickDirectoryAccessWidget::removeEntry(QString path)

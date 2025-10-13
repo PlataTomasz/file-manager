@@ -7,8 +7,6 @@
 #include <qgridlayout.h>
 #include <qlabel.h>
 #include <qobject.h>
-
-#include <iostream>
 #include <qsizepolicy.h>
 
 QuickDirAccessEntryWidget::QuickDirAccessEntryWidget(QWidget *parent)
@@ -23,6 +21,11 @@ QuickDirAccessEntryWidget::QuickDirAccessEntryWidget(QWidget *parent)
     setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
 
     setLayout(layout);
+}
+
+void QuickDirAccessEntryWidget::mouseDoubleClickEvent(QMouseEvent *event)
+{
+    emit doubleClicked();
 }
 
 QuickDirAccessEntryWidget::QuickDirAccessEntryWidget(QString path, QWidget *parent) 

@@ -2,6 +2,7 @@
 #include "DirectoryNavigationService.h"
 #include "DirectoryPathWidget.h"
 #include "DirectoryViewWidget.h"
+#include "QuickDirectoryAccessWidget.h"
 #include <iostream>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -30,6 +31,11 @@ MainWindow::MainWindow(QWidget *parent)
     connect(
         ui.directoryPathWidget, &DirectoryPathWidget::backButtonPressed,
         directoryNavigationService, &DirectoryNavigationService::returnToPreviousDirectory
+    );
+
+    connect(
+        ui.quickDirAccessWidget, &QuickDirectoryAccessWidget::directoryOpened,
+        directoryNavigationService, &DirectoryNavigationService::changeCurrentDirectory
     );
 
     ui.quickDirAccessWidget->addEntry("/home");

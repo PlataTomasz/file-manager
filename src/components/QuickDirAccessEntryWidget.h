@@ -16,6 +16,10 @@ private:
     QLabel *label = nullptr;
     QGridLayout *layout = nullptr;
     QWidget *widget = nullptr;
+protected:
+    void mouseDoubleClickEvent(QMouseEvent *event) override;
+signals:
+    void doubleClicked();
 public:
     explicit QuickDirAccessEntryWidget(QWidget *parent = nullptr);
     explicit QuickDirAccessEntryWidget(QString path, QWidget *parent = nullptr);
