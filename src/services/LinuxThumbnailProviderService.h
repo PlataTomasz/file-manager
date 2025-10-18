@@ -10,6 +10,9 @@
 #include <qfileinfo.h>
 #include <qpixmap.h>
 
+/**
+Class which implements ThumbnailProviderService for Linux based platforms
+*/
 class LinuxThumbnailProviderService : public ThumbnailProviderService
 {
 public:
