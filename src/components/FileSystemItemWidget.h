@@ -12,6 +12,9 @@
 #include <stack>
 #include "ui_FileSystemItemWidget.h"
 
+/**
+Represents entry in the filesystem. Used to display details in DirectoryViewWidget.
+*/
 class FileSystemItemWidget : public QWidget
 {
     Q_OBJECT
@@ -22,11 +25,20 @@ protected slots:
     virtual void mouseDoubleClickEvent(QMouseEvent *event) override;
     virtual void onRightClick();
 signals:
+    /**
+    Informs that user interacted with and expects this entry to be opened.
+    @param fileInfo Information about file, which this widget is representing.
+    */
     void primaryInteraction(QFileInfo fileInfo);
 public:
     explicit FileSystemItemWidget(QWidget *parent = nullptr);
-
+    /**
+    @param fileInfo New fileInfo to be set.
+    */
     void setFileInfo(QFileInfo fileInfo);
+    /**
+    @param thumbnailImage New thumbnail image for this entry.
+    */
     void setThumbnail(QPixmap thumnailImage);
 };
 
