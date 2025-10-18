@@ -30,6 +30,7 @@ void DirectoryNavigationService::returnToPreviousDirectory()
 
 void DirectoryNavigationService::setInitialPath(QString path)
 {
+    // FIXME: Implementation mismatches documentation
     currentDirectoryPath = path;
     emit currentDirectoryChanged(path);
 }
