@@ -70,6 +70,27 @@ include_directories(
     src/services
 )
 
+# === Doxygen Integration ===
+find_package(Doxygen)
+
+if (DOXYGEN_FOUND)
+    set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile.in)
+    message(${DOXYGEN_IN})
+    set(DOXYGEN_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
+    message(${DOXYGEN_OUT})
+
+    configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
+
+    add_custom_target(doc_doxygen
+        COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+        COMMENT "Generating API documentation with Doxygen"
+        VERBATIM
+    )
+else()
+    message(STATUS "Doxygen not found. 'doc_doxygen' target will be unavailable.")
+endif()
+
 # Create the executable
 add_executable(${PROJECT_NAME}
     ${SOURCES}
