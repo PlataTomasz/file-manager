@@ -1,6 +1,8 @@
 #include "FileSystemItemWidget.h"
+#include <qcursor.h>
 #include <qevent.h>
 #include <qfileiconprovider.h>
+#include <qmenu.h>
 #include <qnamespace.h>
 #include <qwidget.h>
 #include <QMouseEvent>
@@ -21,7 +23,7 @@ void FileSystemItemWidget::mouseDoubleClickEvent(QMouseEvent *event)
 
 void FileSystemItemWidget::onRightClick()
 {
-
+    showContextMenu();
 }
 
 void FileSystemItemWidget::setFileInfo(QFileInfo fileInfo)
@@ -33,4 +35,24 @@ void FileSystemItemWidget::setFileInfo(QFileInfo fileInfo)
 void FileSystemItemWidget::setThumbnail(QPixmap thumnailImage)
 {
     ui.iconLabel->setPixmap(thumnailImage);
+}
+
+QAction *FileSystemItemWidget::showContextMenu()
+{
+    // TODO: Can be cached
+    QMenu *menu = new QMenu();
+    menu->addAction(new QAction("Rename..."));
+    menu->addAction(new QAction("Cut"));
+    menu->addAction(new QAction("Copy"));
+    menu->addAction(new QAction("Delete"));
+
+    return menu->exec(QCursor::pos());
+}
+
+void FileSystemItemWidget::mousePressEvent(QMouseEvent *event)
+{
+    if(event->button() == Qt::RightButton)
+    {
+        onRightClick();
+    }
 }

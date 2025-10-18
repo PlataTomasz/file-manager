@@ -5,8 +5,3 @@ FileItemWidget::FileItemWidget(QWidget *parent)
 {
 
 }
-
-void FileItemWidget::onRightClick()
-{
-    
-}

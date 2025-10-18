@@ -3,6 +3,7 @@
 
 #include <QFileInfo>
 #include <deque>
+#include <qaction.h>
 #include <qfileinfo.h>
 #include <qobject.h>
 #include <qpixmap.h>
@@ -21,6 +22,8 @@ class FileSystemItemWidget : public QWidget
 protected:
     QFileInfo fileInfo;
     Ui::FileSystemItemWidget ui;
+    QAction *showContextMenu();
+    virtual void mousePressEvent(QMouseEvent *event) override;
 protected slots:
     virtual void mouseDoubleClickEvent(QMouseEvent *event) override;
     virtual void onRightClick();

@@ -9,8 +9,6 @@
 class FileItemWidget : public FileSystemItemWidget
 {
     Q_OBJECT
-protected:
-    virtual void onRightClick() override;
 public:
     explicit FileItemWidget(QWidget *parent = nullptr);
 };

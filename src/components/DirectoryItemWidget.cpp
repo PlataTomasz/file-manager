@@ -4,8 +4,3 @@ DirectoryItemWidget::DirectoryItemWidget(QWidget *parent)
 {
 
 }
-
-void DirectoryItemWidget::onRightClick()
-{
-    
-}

@@ -9,8 +9,6 @@
 class DirectoryItemWidget : public FileSystemItemWidget
 {
     Q_OBJECT
-protected:
-    virtual void onRightClick() override;
 public:
     explicit DirectoryItemWidget(QWidget *widget = nullptr);
 };
